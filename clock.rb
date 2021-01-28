@@ -7,33 +7,30 @@ class Clock
   def initialize(hour: 0, minute: 0)
     @hour = hour
     @minute = minute
-    hour_in_minutes = hour * 60
-    minutes = hour_in_minutes + minute
-    seconds = minutes * 60
     @base_time = Time.new(2021, 'jan', 1, 0, 0)
-    @base_time += seconds
+    @base_time += in_seconds(hour, minute)
   end
 
   def +(other)
-    hour_in_minutes = other.hour * 60
-    minutes = hour_in_minutes + other.minute
-    seconds = minutes * 60
     first_base_time = base_time
-    first_base_time += seconds
+    first_base_time += in_seconds(other.hour, other.minute)
     first_base_time.strftime('%H:%M')
   end
 
   def -(other)
-    hour_in_minutes = other.hour * 60
-    minutes = hour_in_minutes + other.minute
-    seconds = minutes * 60
     first_base_time = base_time
-    first_base_time -= seconds
+    first_base_time -= in_seconds(other.hour, other.minute)
     first_base_time.strftime('%H:%M')
   end
 
   def ==(other)
     other.base_time.hour == base_time.hour && other.base_time.min == base_time.min
+  end
+
+  def in_seconds(hour, minute)
+    hour_in_minutes = hour * 60
+    minutes = hour_in_minutes + minute
+    minutes * 60
   end
 
   def to_s
