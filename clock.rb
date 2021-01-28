@@ -22,6 +22,18 @@ class Clock
     base_time.strftime('%H:%M')
   end
 
+  def -(other)
+    hour_in_minutes = other.hour * 60
+    minutes = hour_in_minutes + other.minute
+    seconds = minutes * 60
+    @base_time -= seconds
+    base_time.strftime('%H:%M')
+  end
+
+  def ==(other)
+    other.base_time.hour == base_time.hour && other.base_time.min == base_time.min
+  end
+
   def to_s
     base_time.strftime('%H:%M')
   end
