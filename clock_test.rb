@@ -209,7 +209,6 @@ class ClockTest < Minitest::Test
   end
 
   def test_clocks_with_minute_overflow
-    skip
     clock1 = Clock.new(hour: 0, minute: 1)
     clock2 = Clock.new(hour: 0, minute: 1441)
     assert clock1 == clock2
@@ -274,7 +273,6 @@ class ClockTest < Minitest::Test
   end
 
   def test_subtracting_two_clocks_does_not_change_either_clock
-    skip
     clock1 = Clock.new(hour: 12, minute: 0)
     clock2 = Clock.new(hour: 0, minute: 34)
     _clock3 = clock1 - clock2

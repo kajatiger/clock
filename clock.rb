@@ -18,16 +18,18 @@ class Clock
     hour_in_minutes = other.hour * 60
     minutes = hour_in_minutes + other.minute
     seconds = minutes * 60
-    @base_time += seconds
-    base_time.strftime('%H:%M')
+    first_base_time = base_time
+    first_base_time += seconds
+    first_base_time.strftime('%H:%M')
   end
 
   def -(other)
     hour_in_minutes = other.hour * 60
     minutes = hour_in_minutes + other.minute
     seconds = minutes * 60
-    @base_time -= seconds
-    base_time.strftime('%H:%M')
+    first_base_time = base_time
+    first_base_time -= seconds
+    first_base_time.strftime('%H:%M')
   end
 
   def ==(other)
